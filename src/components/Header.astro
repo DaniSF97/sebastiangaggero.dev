@@ -44,9 +44,20 @@ const cvHref = isSpanish
 
     <div class="header-actions">
       <div class="language-switch" aria-label={isSpanish ? 'Idioma' : 'Language'}>
-        <a href="/" lang="en" aria-current={isSpanish ? undefined : 'page'}>EN</a>
-        <span aria-hidden="true">/</span>
-        <a href="/es/" lang="es" aria-current={isSpanish ? 'page' : undefined}>ES</a>
+        
+      <a href="/" lang="en" aria-current={isSpanish ? undefined : 'page'}>EN</a>
+      <span aria-hidden="true">/</span>
+      {
+        isSpanish ? (
+          <a href="/es/" lang="es" aria-current="page">ES</a>
+        ) : Astro.url.pathname === '/projects/job-radar' ||
+          Astro.url.pathname === '/projects/job-radar/' ? (
+          <span lang="es" aria-disabled="true">ES</span>
+        ) : (
+          <a href="/es/" lang="es">ES</a>
+        )
+      }
+
       </div>
 
       <a class="cv-link" href={cvHref} download>

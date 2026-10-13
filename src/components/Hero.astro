@@ -38,8 +38,10 @@ const isSpanish = lang === 'es';
     </div>
   </div>
   <aside class="hero-focus" aria-labelledby="hero-focus-label">
-    <p id="hero-focus-label" class="hero-focus-label">FOCUS</p>
-    <p class="hero-focus-content">FastAPI · REST APIs · Automation</p>
+    <p id="hero-focus-label" class="hero-focus-label">
+  {isSpanish ? 'ENFOQUE' : 'FOCUS'} </p>
+    <p class="hero-focus-content">
+      {isSpanish ? 'FastAPI · APIs REST · Automatización' : 'FastAPI · REST APIs · Automation'} </p>
   </aside>
 </section>
 

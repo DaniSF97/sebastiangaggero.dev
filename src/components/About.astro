@@ -17,8 +17,16 @@ const isSpanish = lang === 'es';
       <div>
         <h3>{isSpanish ? 'Formación' : 'Background'}</h3>
         <ul class="background">
-          <li lang="es">Ingeniería en Conectividad y Redes — DuocUC</li>
-          <li lang="es">Programador Full Stack — 4Geeks Academy</li>
+          <li lang={isSpanish ? 'es' : 'en'}>
+  {isSpanish
+    ? 'Ingeniería en Conectividad y Redes — DuocUC'
+    : 'Connectivity and Networks Engineering — DuocUC'}
+          </li>
+          <li lang={isSpanish ? 'es' : 'en'}>
+            {isSpanish
+              ? 'Programador Full Stack — 4Geeks Academy'
+              : 'Full Stack Developer — 4Geeks Academy'}
+          </li>
         </ul>
       </div>
 
