@@ -1,18 +1,31 @@
+
+---
+interface Props {
+  lang?: 'en' | 'es';
+}
+
+const { lang = 'en' } = Astro.props;
+const isSpanish = lang === 'es';
+---
+
 <section id="work" class="featured-system" aria-labelledby="job-radar-title">
   <header class="system-introduction">
     <div>
-      <p class="section-label">01 / FEATURED SYSTEM</p>
+      <p class="section-label">
+        {isSpanish ? '01 / SISTEMA DESTACADO' : '01 / FEATURED SYSTEM'}
+      </p>
       <h2 id="job-radar-title">Job Radar</h2>
     </div>
     <div class="system-summary">
       <p class="system-problem">
-        External job offers need a consistent structure before they can be compared, filtered and
-        ranked.
+        {isSpanish
+          ? 'Las ofertas de empleo externas necesitan una estructura coherente para poder compararse, filtrarse y ordenarse.'
+          : 'External job offers need a consistent structure before they can be compared, filtered and ranked.'}
       </p>
       <p>
-        Job Radar collects external job offers, normalizes their data and removes duplicates by URL.
-        The application exposes structured results through a FastAPI REST API with filtering and
-        pagination, while deterministic scoring rules keep ranking behavior predictable.
+        {isSpanish
+          ? 'Job Radar recopila ofertas de empleo externas, normaliza sus datos y elimina duplicados mediante la URL. La aplicación expone resultados estructurados a través de una API REST con FastAPI, filtros y paginación. Las reglas de puntuación deterministas mantienen un orden predecible.'
+          : 'Job Radar collects external job offers, normalizes their data and removes duplicates by URL. The application exposes structured results through a FastAPI REST API with filtering and pagination, while deterministic scoring rules keep ranking behavior predictable.'}
       </p>
     </div>
   </header>
@@ -20,27 +33,35 @@
   <div class="system-explanation">
     <figure class="system-overview">
       <figcaption>
-        <span class="section-label">SYSTEM OVERVIEW</span>
-        <span class="overview-caption">Logical responsibilities, not execution order.</span>
+        <span class="section-label">
+          {isSpanish ? 'VISTA GENERAL DEL SISTEMA' : 'SYSTEM OVERVIEW'}
+        </span>
+        <span class="overview-caption">
+          {isSpanish
+            ? 'Responsabilidades lógicas, no orden de ejecución.'
+            : 'Logical responsibilities, not execution order.'}
+        </span>
       </figcaption>
-      <p class="system-input">External offers</p>
+      <p class="system-input">
+        {isSpanish ? 'Ofertas externas' : 'External offers'}
+      </p>
       <dl class="system-stages">
         <div class="system-stage">
-          <dt>Prepare</dt>
-          <dd>ingestion</dd>
-          <dd>normalization</dd>
-          <dd>URL deduplication</dd>
+          <dt>{isSpanish ? 'Preparar' : 'Prepare'}</dt>
+          <dd>{isSpanish ? 'ingesta' : 'ingestion'}</dd>
+          <dd>{isSpanish ? 'normalización' : 'normalization'}</dd>
+          <dd>{isSpanish ? 'eliminación de duplicados por URL' : 'URL deduplication'}</dd>
         </div>
         <div class="system-stage">
-          <dt>Persist</dt>
+          <dt>{isSpanish ? 'Persistir' : 'Persist'}</dt>
           <dd>PostgreSQL</dd>
         </div>
         <div class="system-stage">
-          <dt>Serve</dt>
+          <dt>{isSpanish ? 'Servir' : 'Serve'}</dt>
           <dd>REST API</dd>
-          <dd>filtering</dd>
-          <dd>pagination</dd>
-          <dd>deterministic scoring</dd>
+          <dd>{isSpanish ? 'filtrado' : 'filtering'}</dd>
+          <dd>{isSpanish ? 'paginación' : 'pagination'}</dd>
+          <dd>{isSpanish ? 'puntuación determinista' : 'deterministic scoring'}</dd>
           <dd>frontend</dd>
         </div>
       </dl>
@@ -48,16 +69,24 @@
 
     <dl class="system-notes">
       <div>
-        <dt>URL IDENTITY</dt>
-        <dd>Duplicate offers are identified through their source URL.</dd>
+        <dt>{isSpanish ? 'IDENTIDAD POR URL' : 'URL IDENTITY'}</dt>
+        <dd>
+          {isSpanish
+            ? 'Las ofertas duplicadas se identifican mediante la URL de origen.'
+            : 'Duplicate offers are identified through their source URL.'}
+        </dd>
       </div>
       <div>
-        <dt>DETERMINISTIC SCORING</dt>
-        <dd>Defined scoring rules keep ranking behavior predictable and repeatable.</dd>
+        <dt>{isSpanish ? 'PUNTUACIÓN DETERMINISTA' : 'DETERMINISTIC SCORING'}</dt>
+        <dd>
+          {isSpanish
+            ? 'Las reglas de puntuación definidas hacen que la clasificación sea predecible y reproducible.'
+            : 'Defined scoring rules keep ranking behavior predictable and repeatable.'}
+        </dd>
       </div>
       <div>
-        <dt>ENGINEERING EVIDENCE</dt>
-        <dd>OpenAPI documentation · pytest · GitHub Actions</dd>
+        <dt>{isSpanish ? 'EVIDENCIAS DE INGENIERÍA' : 'ENGINEERING EVIDENCE'}</dt>
+        <dd>OpenAPI · pytest · GitHub Actions</dd>
       </div>
     </dl>
   </div>
@@ -65,27 +94,31 @@
   <footer class="system-footer">
     <dl class="system-metadata">
       <div>
-        <dt>APPLICATION</dt>
+        <dt>{isSpanish ? 'APLICACIÓN' : 'APPLICATION'}</dt>
         <dd>Python 3.12 · FastAPI</dd>
       </div>
       <div>
-        <dt>DATA</dt>
+        <dt>{isSpanish ? 'DATOS' : 'DATA'}</dt>
         <dd>PostgreSQL · SQLAlchemy · Alembic</dd>
       </div>
       <div>
-        <dt>DELIVERY</dt>
+        <dt>{isSpanish ? 'DESPLIEGUE' : 'DELIVERY'}</dt>
         <dd>Docker</dd>
       </div>
     </dl>
     <div class="system-links">
-      <a href="/projects/job-radar">Read the engineering case study →</a>
+      <a href={isSpanish ? '/es/projects/job-radar/' : '/projects/job-radar'}>
+        {isSpanish
+          ? 'Leer el caso de estudio técnico →'
+          : 'Read the engineering case study →'}
+      </a>
       <a
         class="live-link"
         href="https://job-radar-bonw.onrender.com/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Open live project →
+        {isSpanish ? 'Abrir proyecto en vivo →' : 'Open live project →'}
       </a>
     </div>
   </footer>

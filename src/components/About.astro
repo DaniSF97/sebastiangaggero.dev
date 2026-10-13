@@ -1,27 +1,43 @@
+---
+interface Props {
+  lang?: 'en' | 'es';
+}
+
+const { lang = 'en' } = Astro.props;
+const isSpanish = lang === 'es';
+---
+
 <section id="about" class="about" aria-labelledby="about-heading">
-  <h2 id="about-heading">05 / ABOUT</h2>
+  <h2 id="about-heading">
+    {isSpanish ? '05 / SOBRE MÍ' : '05 / ABOUT'}
+  </h2>
 
   <div class="about-content">
     <div class="profile-facts">
       <div>
-        <h3>Background</h3>
+        <h3>{isSpanish ? 'Formación' : 'Background'}</h3>
         <ul class="background">
           <li lang="es">Ingeniería en Conectividad y Redes — DuocUC</li>
           <li lang="es">Programador Full Stack — 4Geeks Academy</li>
         </ul>
       </div>
+
       <div>
-        <h3>Current focus</h3>
-        <p>My current focus is Python backend development, REST APIs and automation.</p>
+        <h3>{isSpanish ? 'Enfoque actual' : 'Current focus'}</h3>
+        <p>
+          {isSpanish
+            ? 'Actualmente me centro en el desarrollo backend con Python, las APIs REST y la automatización.'
+            : 'My current focus is Python backend development, REST APIs and automation.'}
+        </p>
       </div>
     </div>
 
     <div class="engineering-approach">
-      <h3>Engineering approach</h3>
+      <h3>{isSpanish ? 'Mi enfoque de desarrollo' : 'Engineering approach'}</h3>
       <p>
-        I start by understanding the problem and its constraints. I favor straightforward
-        implementations and choose technologies for a specific need. I automate repetitive work and
-        test the parts most likely to fail.
+        {isSpanish
+          ? 'Empiezo por comprender el problema y sus limitaciones. Prefiero soluciones sencillas y elijo las tecnologías según las necesidades concretas. Automatizo tareas repetitivas y pruebo especialmente las partes con mayor probabilidad de fallar.'
+          : 'I start by understanding the problem and its constraints. I favor straightforward implementations and choose technologies for a specific need. I automate repetitive work and test the parts most likely to fail.'}
       </p>
     </div>
   </div>

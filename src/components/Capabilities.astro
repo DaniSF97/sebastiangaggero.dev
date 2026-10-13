@@ -1,39 +1,54 @@
+---
+interface Props {
+  lang?: 'en' | 'es';
+}
+
+const { lang = 'en' } = Astro.props;
+const isSpanish = lang === 'es';
+---
+
 <section class="capabilities" aria-labelledby="capabilities-heading">
   <header class="capabilities-introduction">
-    <h2 id="capabilities-heading">04 / CAPABILITIES</h2>
+    <h2 id="capabilities-heading">
+      {isSpanish ? '04 / COMPETENCIAS TÉCNICAS' : '04 / CAPABILITIES'}
+    </h2>
     <p>
-      A compact view of the tools and technical areas I use across backend development, automation
-      and integrations.
+      {isSpanish
+        ? 'Una visión general de las herramientas y áreas técnicas que utilizo en desarrollo backend, automatización e integraciones.'
+        : 'A compact view of the tools and technical areas I use across backend development, automation and integrations.'}
     </p>
   </header>
 
   <dl class="capability-index">
     <div class="capability-row">
-      <dt>Backend</dt>
+      <dt>{isSpanish ? 'Backend' : 'Backend'}</dt>
       <dd>
         <p>Python · FastAPI · REST APIs</p>
         <p>PostgreSQL · SQLAlchemy · Alembic</p>
       </dd>
     </div>
+
     <div class="capability-row">
-      <dt>Automation</dt>
+      <dt>{isSpanish ? 'Automatización' : 'Automation'}</dt>
       <dd>
         <p>Python scripting · Playwright</p>
-        <p>Data processing · browser workflows</p>
+        <p>{isSpanish ? 'Procesamiento de datos · automatización de navegadores' : 'Data processing · browser workflows'}</p>
       </dd>
     </div>
+
     <div class="capability-row">
-      <dt>Engineering Workflow</dt>
+      <dt>{isSpanish ? 'Flujo de trabajo' : 'Engineering Workflow'}</dt>
       <dd>
         <p>Git · GitHub · Linux · Docker</p>
         <p>pytest · GitHub Actions</p>
       </dd>
     </div>
+
     <div class="capability-row">
-      <dt>Integrations</dt>
+      <dt>{isSpanish ? 'Integraciones' : 'Integrations'}</dt>
       <dd>
-        <p>External APIs · JSON · authentication</p>
-        <p>Service-to-service data flows</p>
+        <p>{isSpanish ? 'APIs externas · JSON · autenticación' : 'External APIs · JSON · authentication'}</p>
+        <p>{isSpanish ? 'Flujos de datos entre servicios' : 'Service-to-service data flows'}</p>
       </dd>
     </div>
   </dl>

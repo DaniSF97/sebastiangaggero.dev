@@ -1,6 +1,16 @@
-<footer class="container">
+---
+interface Props {
+  lang?: 'en' | 'es';
+}
+
+const { lang = 'en' } = Astro.props;
+const isSpanish = lang === 'es';
+---
+
+<footer class="container" lang={lang}>
   <div class="footer-content">
     <p>Sebastian Gaggero</p>
+
     <div class="footer-links">
       <a href="https://github.com/SrMetus" target="_blank" rel="noopener noreferrer">
         GitHub
@@ -13,7 +23,8 @@
         LinkedIn
       </a>
     </div>
-    <p>© 2026</p>
+
+    <p>{isSpanish ? '© 2026 · Todos los derechos reservados' : '© 2026'}</p>
   </div>
 </footer>
 

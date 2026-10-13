@@ -1,9 +1,21 @@
+---
+interface Props {
+  lang?: 'en' | 'es';
+}
+
+const { lang = 'en' } = Astro.props;
+const isSpanish = lang === 'es';
+---
+
 <section id="services" class="services" aria-labelledby="services-heading">
   <header class="services-introduction">
-    <h2 id="services-heading">03 / SERVICES</h2>
+    <h2 id="services-heading">
+      {isSpanish ? '03 / SERVICIOS' : '03 / SERVICES'}
+    </h2>
     <p>
-      I build backend systems and automation for workflows that need reliable logic, data handling
-      or integration between services.
+      {isSpanish
+        ? 'Desarrollo sistemas backend y automatizaciones para procesos que necesitan lógica fiable, gestión de datos o integración entre servicios.'
+        : 'I build backend systems and automation for workflows that need reliable logic, data handling or integration between services.'}
     </p>
   </header>
 
@@ -11,67 +23,85 @@
     <h3>Backend &amp; APIs</h3>
     <dl>
       <div>
-        <dt>THE NEED</dt>
+        <dt>{isSpanish ? 'LA NECESIDAD' : 'THE NEED'}</dt>
         <dd>
-          An application needs a backend to validate requests, apply business rules and store data.
+          {isSpanish
+            ? 'Una aplicación necesita un backend que valide solicitudes, aplique reglas de negocio y almacene datos.'
+            : 'An application needs a backend to validate requests, apply business rules and store data.'}
         </dd>
       </div>
       <div>
-        <dt>WHAT I CAN BUILD</dt>
-        <dd>Python and FastAPI services with REST endpoints and PostgreSQL persistence.</dd>
-      </div>
-    </dl>
-  </div>
-
-  <div class="service-row">
-    <h3>Automation</h3>
-    <dl>
-      <div>
-        <dt>THE NEED</dt>
+        <dt>{isSpanish ? 'QUÉ PUEDO DESARROLLAR' : 'WHAT I CAN BUILD'}</dt>
         <dd>
-          Files need processing, data needs cleaning, or the same workflow keeps being repeated
-          manually.
-        </dd>
-      </div>
-      <div>
-        <dt>WHAT I CAN BUILD</dt>
-        <dd>
-          Python automation for repeatable workflows, including scripts, browser automation and data
-          processing when appropriate.
+          {isSpanish
+            ? 'Servicios con Python y FastAPI, endpoints REST y persistencia de datos con PostgreSQL.'
+            : 'Python and FastAPI services with REST endpoints and PostgreSQL persistence.'}
         </dd>
       </div>
     </dl>
   </div>
 
   <div class="service-row">
-    <h3>API Integrations</h3>
+    <h3>{isSpanish ? 'Automatización' : 'Automation'}</h3>
     <dl>
       <div>
-        <dt>THE NEED</dt>
-        <dd>Information needs to move between services with different APIs and data formats.</dd>
+        <dt>{isSpanish ? 'LA NECESIDAD' : 'THE NEED'}</dt>
+        <dd>
+          {isSpanish
+            ? 'Hay que procesar archivos, limpiar datos o repetir manualmente el mismo proceso una y otra vez.'
+            : 'Files need processing, data needs cleaning, or the same workflow keeps being repeated manually.'}
+        </dd>
       </div>
       <div>
-        <dt>WHAT I CAN BUILD</dt>
+        <dt>{isSpanish ? 'QUÉ PUEDO DESARROLLAR' : 'WHAT I CAN BUILD'}</dt>
         <dd>
-          Python integrations that fetch, transform and send data, with explicit handling of API
-          failures.
+          {isSpanish
+            ? 'Automatizaciones con Python para procesos repetibles, incluidos scripts, automatización de navegadores y procesamiento de datos cuando sea apropiado.'
+            : 'Python automation for repeatable workflows, including scripts, browser automation and data processing when appropriate.'}
         </dd>
       </div>
     </dl>
   </div>
 
   <div class="service-row">
-    <h3>Internal Tools</h3>
+    <h3>{isSpanish ? 'Integraciones de API' : 'API Integrations'}</h3>
     <dl>
       <div>
-        <dt>THE NEED</dt>
-        <dd>A team needs a focused tool for a specific operational process.</dd>
+        <dt>{isSpanish ? 'LA NECESIDAD' : 'THE NEED'}</dt>
+        <dd>
+          {isSpanish
+            ? 'Es necesario intercambiar información entre servicios con distintas APIs y formatos de datos.'
+            : 'Information needs to move between services with different APIs and data formats.'}
+        </dd>
       </div>
       <div>
-        <dt>WHAT I CAN BUILD</dt>
+        <dt>{isSpanish ? 'QUÉ PUEDO DESARROLLAR' : 'WHAT I CAN BUILD'}</dt>
         <dd>
-          Small internal applications built around that workflow, with the necessary data handling
-          and business logic kept in one place.
+          {isSpanish
+            ? 'Integraciones con Python que obtienen, transforman y envían datos, gestionando explícitamente los errores de las APIs.'
+            : 'Python integrations that fetch, transform and send data, with explicit handling of API failures.'}
+        </dd>
+      </div>
+    </dl>
+  </div>
+
+  <div class="service-row">
+    <h3>{isSpanish ? 'Herramientas internas' : 'Internal Tools'}</h3>
+    <dl>
+      <div>
+        <dt>{isSpanish ? 'LA NECESIDAD' : 'THE NEED'}</dt>
+        <dd>
+          {isSpanish
+            ? 'Un equipo necesita una herramienta específica para un proceso operativo concreto.'
+            : 'A team needs a focused tool for a specific operational process.'}
+        </dd>
+      </div>
+      <div>
+        <dt>{isSpanish ? 'QUÉ PUEDO DESARROLLAR' : 'WHAT I CAN BUILD'}</dt>
+        <dd>
+          {isSpanish
+            ? 'Pequeñas aplicaciones internas adaptadas a ese proceso, con la gestión de datos y la lógica de negocio necesarias centralizadas.'
+            : 'Small internal applications built around that workflow, with the necessary data handling and business logic kept in one place.'}
         </dd>
       </div>
     </dl>

@@ -1,27 +1,58 @@
+
+---
+interface Props {
+  lang?: 'en' | 'es';
+}
+
+const { lang = 'en' } = Astro.props;
+const isSpanish = lang === 'es';
+
+const links = isSpanish
+  ? [
+      { href: '/es/#work', label: 'Proyectos' },
+      { href: '/es/#services', label: 'Servicios' },
+      { href: '/es/#about', label: 'Sobre mí' },
+      { href: '/es/#contact', label: 'Contacto' },
+    ]
+  : [
+      { href: '/#work', label: 'Work' },
+      { href: '/#services', label: 'Services' },
+      { href: '/#about', label: 'About' },
+      { href: '/#contact', label: 'Contact' },
+    ];
+
+const cvHref = isSpanish
+  ? '/sebastian-gaggero-cv-es.pdf'
+  : '/sebastian-gaggero-cv-en.pdf';
+---
+
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/">
+    <a class="brand" href={isSpanish ? '/es/' : '/'}>
       Sebastian Gaggero
     </a>
-    <nav aria-label="Primary">
+
+    <nav aria-label={isSpanish ? 'Navegación principal' : 'Primary navigation'}>
       <ul role="list">
-        <li>
-          <a href="/#work">Work</a>
-        </li>
-        <li>
-          <a href="/#services">Services</a>
-        </li>
-        <li>
-          <a href="/#about">About</a>
-        </li>
-        <li>
-          <a href="/#contact">Contact</a>
-        </li>
+        {links.map((link) => (
+          <li>
+            <a href={link.href}>{link.label}</a>
+          </li>
+        ))}
       </ul>
     </nav>
-    <a class="cv-link" href="/sebastian-gaggero-cv-en.pdf" download>
-      Download CV
-    </a>
+
+    <div class="header-actions">
+      <div class="language-switch" aria-label={isSpanish ? 'Idioma' : 'Language'}>
+        <a href="/" lang="en" aria-current={isSpanish ? undefined : 'page'}>EN</a>
+        <span aria-hidden="true">/</span>
+        <a href="/es/" lang="es" aria-current={isSpanish ? 'page' : undefined}>ES</a>
+      </div>
+
+      <a class="cv-link" href={cvHref} download>
+        {isSpanish ? 'Descargar CV' : 'Download CV'}
+      </a>
+    </div>
   </div>
 </header>
 
@@ -61,9 +92,39 @@
     max-inline-size: 100%;
   }
 
-  .cv-link {
+  .header-actions {
     grid-column: 2;
     grid-row: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-3);
+  }
+
+  .language-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--font-size-small);
+    white-space: nowrap;
+  }
+
+  .language-switch a {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 2.75rem;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .language-switch a[aria-current='page'] {
+    font-weight: var(--font-weight-bold);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .cv-link {
     display: inline-flex;
     align-items: center;
     min-block-size: 2.75rem;
@@ -75,7 +136,8 @@
     white-space: nowrap;
   }
 
-  .cv-link:hover {
+  .cv-link:hover,
+  .language-switch a:hover {
     color: var(--color-primary);
   }
 
@@ -129,8 +191,9 @@
       grid-row: 1;
     }
 
-    .cv-link {
+    .header-actions {
       grid-column: 3;
+      grid-row: 1;
     }
   }
 </style>

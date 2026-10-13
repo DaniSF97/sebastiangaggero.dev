@@ -1,59 +1,87 @@
+
+---
+interface Props {
+  lang?: 'en' | 'es';
+}
+
+const { lang = 'en' } = Astro.props;
+const isSpanish = lang === 'es';
+---
+
 <section class="selected-work" aria-labelledby="selected-work-heading">
   <h2 id="selected-work-heading" class="section-label">
-    02 / SELECTED WORK
+    {isSpanish ? '02 / PROYECTOS SELECCIONADOS' : '02 / SELECTED WORK'}
   </h2>
   <article class="project" aria-labelledby="surtr-title">
     <header class="project-identity">
       <h3 id="surtr-title">Surtr Alert</h3>
-      <p>Python notification plugin for WeeChat on Linux</p>
+      <p>
+        {isSpanish
+          ? 'Plugin de notificaciones en Python para WeeChat en Linux'
+          : 'Python notification plugin for WeeChat on Linux'}
+      </p>
     </header>
 
     <div class="project-narrative">
       <p class="project-problem">
-        Relevant IRC activity can be easy to miss when attention is elsewhere.
+        {isSpanish
+          ? 'Es fácil pasar por alto actividad relevante en IRC cuando la atención está en otra cosa.'
+          : 'Relevant IRC activity can be easy to miss when attention is elsewhere.'}
       </p>
       <p>
-        Surtr Alert adds local notifications for channel mentions, private messages and IRC notices,
-        with optional alerts when configured friends join or leave.
+        {isSpanish
+          ? 'Surtr Alert añade notificaciones locales para menciones en canales, mensajes privados y avisos de IRC. También permite recibir alertas cuando determinados contactos se conectan o desconectan.'
+          : 'Surtr Alert adds local notifications for channel mentions, private messages and IRC notices, with optional alerts when configured friends join or leave.'}
       </p>
       <p>
-        Python callbacks respond to WeeChat signal hooks, while settings stay in WeeChat’s native
-        plugin configuration. No external web service is required.
+        {isSpanish
+          ? 'Los callbacks de Python responden a los hooks de señales de WeeChat, mientras que los ajustes se mantienen en la configuración nativa de plugins de WeeChat. No necesita servicios web externos.'
+          : 'Python callbacks respond to WeeChat signal hooks, while settings stay in WeeChat’s native plugin configuration. No external web service is required.'}
       </p>
     </div>
 
     <figure class="notification-path">
       <figcaption>
-        <span class="section-label">FROM IRC ACTIVITY TO A LOCAL ALERT</span>
+        <span class="section-label">
+          {isSpanish ? 'DE LA ACTIVIDAD IRC A UNA NOTIFICACIÓN LOCAL' : 'FROM IRC ACTIVITY TO A LOCAL ALERT'}
+        </span>
         <span class="path-caption">
-          Conceptual inputs and outputs, not execution or fallback order.
+          {isSpanish
+            ? 'Entradas y salidas conceptuales; no representan el orden de ejecución ni el orden de alternativas.'
+            : 'Conceptual inputs and outputs, not execution or fallback order.'}
         </span>
       </figcaption>
       <div class="path-details">
         <div class="path-side">
-          <h4>WeeChat events</h4>
+          <h4>{isSpanish ? 'Eventos de WeeChat' : 'WeeChat events'}</h4>
           <ul>
-            <li>channel mentions</li>
-            <li>private messages</li>
-            <li>IRC notices</li>
-            <li>configured friend activity</li>
+            <li>{isSpanish ? 'menciones en canales' : 'channel mentions'}</li>
+            <li>{isSpanish ? 'mensajes privados' : 'private messages'}</li>
+            <li>avisos de IRC</li>
+            <li>{isSpanish ? 'actividad de contactos configurados' : 'configured friend activity'}</li>
           </ul>
         </div>
         <div class="path-boundary">
-          <p>Python signal hooks</p>
-          <p>Available controls: monitored-channel filters and ignored nicks.</p>
+          <p>{isSpanish ? 'Hooks de señales de Python' : 'Python signal hooks'}</p>
+          <p>
+            {isSpanish
+              ? 'Opciones disponibles: filtros de canales supervisados y apodos ignorados.'
+              : 'Available controls: monitored-channel filters and ignored nicks.'}
+          </p>
         </div>
         <div class="path-side">
-          <h4>Local notification</h4>
+          <h4>{isSpanish ? 'Notificación local' : 'Local notification'}</h4>
           <ul>
             <li>notify-send</li>
-            <li>terminal</li>
+            <li>{isSpanish ? 'terminal' : 'terminal'}</li>
             <li>Zenity</li>
-            <li>local log</li>
+            <li>{isSpanish ? 'registro local' : 'local log'}</li>
           </ul>
         </div>
       </div>
-      <p class="configuration-note">Settings stored in WeeChat.</p>
+      <p class="configuration-note">
+        {isSpanish ? 'Ajustes almacenados en WeeChat.' : 'Settings stored in WeeChat.'}
+      </p>
     </figure>
 
     <a
@@ -62,7 +90,7 @@
       target="_blank"
       rel="noopener noreferrer"
     >
-      View repository →
+      {isSpanish ? 'Ver repositorio →' : 'View repository →'}
     </a>
   </article>
 </section>

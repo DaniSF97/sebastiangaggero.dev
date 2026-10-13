@@ -1,21 +1,39 @@
+---
+interface Props {
+  lang?: 'en' | 'es';
+}
+
+const { lang = 'en' } = Astro.props;
+const isSpanish = lang === 'es';
+---
+
 <section id="contact" class="contact" aria-labelledby="contact-heading">
-  <h2 id="contact-heading">07 / CONTACT</h2>
+  <h2 id="contact-heading">
+    {isSpanish ? '07 / CONTACTO' : '07 / CONTACT'}
+  </h2>
 
   <div class="contact-content">
     <p>
-      If you’re hiring for Python backend work or need help with backend systems, automation or
-      integrations, LinkedIn is the best place to reach me.
+      {isSpanish
+        ? 'Si buscas a alguien para desarrollar soluciones backend con Python o necesitas ayuda con sistemas backend, automatización o integraciones, puedes contactarme a través de LinkedIn.'
+        : 'If you’re hiring for Python backend work or need help with backend systems, automation or integrations, LinkedIn is the best place to reach me.'}
     </p>
+
     <div class="contact-links">
       <a
         href="https://www.linkedin.com/in/sebastiangaggero/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Contact on LinkedIn →
+        {isSpanish ? 'Contactar por LinkedIn →' : 'Contact on LinkedIn →'}
       </a>
-      <a href="https://github.com/SrMetus" target="_blank" rel="noopener noreferrer">
-        View GitHub →
+
+      <a
+        href="https://github.com/SrMetus"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {isSpanish ? 'Ver GitHub →' : 'View GitHub →'}
       </a>
     </div>
   </div>
